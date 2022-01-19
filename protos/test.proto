@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package grpc_redis;
+//import "google/api/http.proto";
+//import "google/api/annotations.proto";
+//import "google/protobuf/timestamp.proto";
+
+service UserStorage{
+    rpc Queryword (CommonRequest) returns (QueryReply) {}
+    rpc AddSentence (CommonRequest) returns (CommonReply) {}
+}
+
+message QueryReply{
+    int64 code=1;
+    string message=2;
+    repeated string user_list=3;
+}
+
+message CommonReply{
+    int64 code=1;  //code=0表示正常返回
+    string message=2; // message="“表示正常返回
+}
+
+message CommonRequest{
+    string stu_name=1;
+}
